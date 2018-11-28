@@ -1,0 +1,152 @@
+<html>
+	<head>
+		<title>ABCD</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<style>
+		@font-face {
+			font-family: 'Circular';
+			src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1137/Circular-Book.woff') format('woff');
+			font-weight: normal;
+		}
+
+		@font-face {
+			font-family: 'Circular';
+			src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1137/Circular-Bold.woff') format('woff');
+			font-weight: bold;
+		}
+		* {
+		  box-sizing: border-box;
+		}
+		html,
+		body {
+			background: #18212D;
+		}
+
+		body {
+		  position: absolute;
+		  display: flex;
+		  flex-direction: column;
+		  width: 100%;
+		  height: 97%;
+		  padding: 1rem;
+		  color: white;
+			font-family: 'Circular', 'sans-serif';
+			-webkit-font-smoothing: antialiased;
+		}
+
+		section {
+		  display: flex;
+		  flex-direction: row;
+			position: relative;
+		  width: 100%;
+		  margin: auto;
+		  text-align: center;
+		}
+
+		h1 {
+		  margin-bottom: 1rem;
+		  font-size: 1.5rem;
+		}
+
+		a {
+		  color: #206EFF;
+		  font-weight: bold;
+		  text-decoration: none;
+		}
+
+		a:hover {
+		  text-decoration: underline;
+		}
+
+		footer {
+		  margin-bottom: 1rem;
+		}
+
+		footer span {
+		  opacity: .5;
+		}
+
+		.logo img {
+		  width: 75px;
+		  height: 16px;
+		}
+
+		article {
+		  display: flex;
+		  flex-direction: row;
+			position: relative;
+		  width: 100%;
+		  height:100%;
+		  margin-bottom: 1rem;
+		  padding: 1rem;
+		}
+
+		.red {
+		  background-color: #FF324A;
+		}
+
+		.green {
+		  background-color: #31FFA6;
+		}
+
+		.blue {
+		  background-color: #206EFF;
+		}
+
+		.yellow {
+		  background-color: #FFFF99;
+		}
+		div.brick {
+		  width: 3rem;
+		  height: 3rem;
+		  margin: 1.8rem;
+		}
+		.brick span{
+		font-size:2.5em;
+		}
+</style>
+	</head>
+	<body>	
+		<section>
+  <article id="content">
+    <!--<div class="blue brick">
+		<span>A</span>
+	</div>
+    <div class="green brick"></div>-->
+  </article>
+ </section>
+	</body>
+	<script type="text/javascript" >
+	window.onkeyup = function(e) {
+	   let key = e.keyCode ? e.keyCode : e.which;
+	   console.log(key);
+	   if(key >= 65 && key <= 90){
+	   let content= document.getElementById("content");
+		let dv = document.createElement("div");
+		dv.classList = ["green brick"]
+		let span = document.createElement("span");
+		span.innerHTML = e.key.toUpperCase();
+		dv.appendChild(span);
+		content.appendChild(dv);
+		addAnimation(anime, ['.green']);
+	   }
+		
+	}
+	function addAnimation(anime, targets){
+		return anime({
+		  targets: targets,
+		  translateY: '25rem',
+		  borderRadius: '8px',
+		  duration: 8000,
+		  loop: false,
+		  scale: {
+			value: 2,
+			duration: 1600,
+			delay: 800,
+			easing: 'easeInOutQuart'
+		  }
+		});
+	}
+	</script>
+</html>
