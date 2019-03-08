@@ -105,6 +105,9 @@
 		.brick span{
 		font-size:2.5em;
 		}
+		.image{
+			position: absolute;
+		}
 </style>
 	</head>
 	<body>	
@@ -114,24 +117,32 @@
 		<span>A</span>
 	</div>
     <div class="green brick"></div>-->
+	<div class="image">
+		<img src="img/a.png" />
+	</div>
   </article>
  </section>
 	</body>
 	<script type="text/javascript" >
+	let colors = ['red','blue','yellow','green'];
 	window.onkeyup = function(e) {
 	   let key = e.keyCode ? e.keyCode : e.which;
 	   console.log(key);
 	   if(key >= 65 && key <= 90){
 	   let content= document.getElementById("content");
 		let dv = document.createElement("div");
-		dv.classList = ["green brick"]
+		let colorName = getRandomColorClassName(colors, 0, colors.length);
+		dv.classList = [colorName + " brick"]
 		let span = document.createElement("span");
 		span.innerHTML = e.key.toUpperCase();
 		dv.appendChild(span);
 		content.appendChild(dv);
-		addAnimation(anime, ['.green']);
+		addAnimation(anime, ['.'+colorName]);
 	   }
-		
+	}
+	function getRandomColorClassName(array, min, max){
+		let random_number = Math.random() * (max-min) + min;
+		return array[Math.floor(random_number)];
 	}
 	function addAnimation(anime, targets){
 		return anime({
